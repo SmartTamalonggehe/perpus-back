@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ProdiAPI;
 use App\Http\Controllers\API\AnggotaAPI;
+use App\Http\Controllers\API\ClassUmumAPI;
 use App\Http\Controllers\API\KatalogAPI;
 
 /*
@@ -33,4 +34,9 @@ Route::prefix('katalog')->group(function () {
     Route::get('/all', [KatalogAPI::class, 'all']);
     Route::get('/ready', [KatalogAPI::class, 'ready']);
     Route::get('/detail/{id}', [KatalogAPI::class, 'detail']);
+});
+
+Route::prefix('classUmum')->group(function () {
+    Route::get('/', [ClassUmumAPI::class, 'index']);
+    Route::get('/all', [ClassUmumAPI::class, 'all']);
 });

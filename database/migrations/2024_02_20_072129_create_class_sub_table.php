@@ -11,15 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('katalog', function (Blueprint $table) {
+        Schema::create('class_sub', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
-            $table->string('penulis');
-            $table->string('penerbit');
-            $table->string('tahun');
-            $table->string('jenis');
-            $table->string('stok');
-            $table->string('cover');
+            // foreign to class_umum
+            $table->foreignId('class_umum_id')->constrained('class_umum')
+                ->onDelete('cascade')->onUpdate('cascade');
+            $table->string('nm_sub');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('katalog');
+        Schema::dropIfExists('class_sub');
     }
 };
