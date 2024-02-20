@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\ClassUmum;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,10 @@ class ClassSubFactory extends Factory
      */
     public function definition(): array
     {
+        $class_umum_id = ClassUmum::inRandomOrder()->first()->id;
         return [
-            //
+            'class_umum_id' => $class_umum_id,
+            'nm_sub' => $this->faker->sentence(),
         ];
     }
 }

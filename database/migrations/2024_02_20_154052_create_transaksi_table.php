@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('anggota_id')->constrained('anggota');
             $table->foreignId('katalog_id')->constrained('katalog');
+            $table->string('keperluan'); // skripsi, lainnya
             $table->string('status');
             $table->date('tgl_pinjam');
             $table->date('tgl_kembali')->nullable();

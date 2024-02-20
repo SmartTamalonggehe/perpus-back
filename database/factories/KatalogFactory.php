@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\ClassSub;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,14 +21,18 @@ class KatalogFactory extends Factory
         $data = json_decode(file_get_contents($json), true);
         // random cover
         $cover = $data[array_rand($data)]['urls']['regular'];
+        // class sub id
+        $classSubId = ClassSub::inRandomOrder()->first()->id;
         return [
             'judul' => $this->faker->sentence(),
             'penulis' => $this->faker->name(),
             'penerbit' => $this->faker->company(),
-            'tahun' => $this->faker->year(),
+            // tahun between 2000-sekarang
+            'tahun' => $this->faker->numberBetween(2000, 2023),
             'jenis' => $this->faker->randomElement(['buku', 'jurnal', 'tugas akhir']),
             'stok' => $this->faker->numberBetween(1, 100),
             'cover' => $cover,
+            'class_sub_id' => $classSubId
         ];
     }
 }

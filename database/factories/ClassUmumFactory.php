@@ -17,7 +17,8 @@ class ClassUmumFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'nomor' => $this->faker->ean8,
+            'nm_umum' => $this->faker->sentence(),
         ];
     }
 }
