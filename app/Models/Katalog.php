@@ -10,4 +10,10 @@ class Katalog extends Model
     use HasFactory;
 
     protected $table = 'katalog';
+
+    // belongTo classSub
+    public function class_sub()
+    {
+        return $this->belongsTo(ClassSub::class, 'class_sub_id');
+    }
 }

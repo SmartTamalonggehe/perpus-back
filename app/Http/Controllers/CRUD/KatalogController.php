@@ -56,7 +56,7 @@ class KatalogController extends Controller
         $search = $request->search;
         $limit = $request->limit;
         $jenis = $request->jenis;
-        $data = Katalog::where('judul', 'like', "%$search%")
+        $data = Katalog::with('class_sub')->where('judul', 'like', "%$search%")
             ->where('jenis', $jenis)
             ->paginate($limit);
         return new CrudResource('success', 'Data Katalog', $data);
@@ -92,7 +92,7 @@ class KatalogController extends Controller
         }
         Katalog::create($data_req);
 
-        $data = Katalog::latest()->first();
+        $data = Katalog::with('class_sub')->latest()->first();
 
         return new CrudResource('success', 'Data Berhasil Disimpan', $data);
     }
@@ -105,7 +105,7 @@ class KatalogController extends Controller
      */
     public function show($id)
     {
-        $data = Katalog::find($id);
+        $data = Katalog::with('class_sub')->find($id);
         return new CrudResource('success', 'Data Katalog', $data);
     }
 

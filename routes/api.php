@@ -4,8 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ProdiAPI;
 use App\Http\Controllers\API\AnggotaAPI;
-use App\Http\Controllers\API\ClassUmumAPI;
 use App\Http\Controllers\API\KatalogAPI;
+use App\Http\Controllers\API\ClassSubAPI;
+use App\Http\Controllers\API\ClassUmumAPI;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,4 +40,9 @@ Route::prefix('katalog')->group(function () {
 Route::prefix('classUmum')->group(function () {
     Route::get('/', [ClassUmumAPI::class, 'index']);
     Route::get('/all', [ClassUmumAPI::class, 'all']);
+});
+
+Route::prefix('classSub')->group(function () {
+    Route::get('/', [ClassSubAPI::class, 'index']);
+    Route::get('/all', [ClassSubAPI::class, 'all']);
 });
