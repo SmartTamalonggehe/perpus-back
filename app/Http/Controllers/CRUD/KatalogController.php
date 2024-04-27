@@ -27,13 +27,12 @@ class KatalogController extends Controller
             $required = "required";
         }
         $rules = [
-            'judul' => 'required|unique:katalog,judul,' . $id,
+            'judul' => 'required',
 
         ];
 
         $messages = [
             'judul.required' => 'Judul harus diisi.',
-            'judul.unique' => 'Judul sudah ada.',
         ];
         $validator = Validator::make($request, $rules, $messages);
 
