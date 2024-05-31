@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('anggota', function (Blueprint $table) {
-            $table->string('tempat', 100)->after('alamat');
-            $table->date('tgl_lahir')->after('tempat');
+            $table->string('tempat', 100)->nullable()->after('alamat');
+            $table->date('tgl_lahir')->nullable()->after('tempat');
         });
     }
 

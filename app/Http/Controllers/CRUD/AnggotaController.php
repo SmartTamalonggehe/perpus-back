@@ -28,10 +28,14 @@ class AnggotaController extends Controller
         }
         $rules = [
             'nama' => 'required',
+            'tempat' => 'required',
+            'tgl_lahir' => 'required',
         ];
 
         $messages = [
             'nama.required' => 'Nama harus diisi.',
+            'tempat.required' => 'Tempat lahir harus diisi.',
+            'tgl_lahir.required' => 'Tgl. Lahir harus diisi.',
         ];
         $validator = Validator::make($request, $rules, $messages);
 
